@@ -7,11 +7,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Rays Software/JarFiles/mysql-connector-java-8.0.30.jar"/>
-	<classpathentry kind="lib" path="C:/Rays Software/JarFiles/c3p0-0.9.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Rays Software/JarFiles/javax.servlet-api-3.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Rays Software/JarFiles/mchange-commons-java-0.2.12.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -8,18 +8,18 @@
 </head>
 <body>
 	
-	<form action="FirstServlet" method ="post">
+	<form action="UserRegistrationCtl" method ="post">
 		<table>
 			<tr>
-				<th>First Name :</th>
+				<th>First_Name :</th>
 				<td><input type="text" name="firstName"></td>
 			</tr>
 			<tr>
-				<th>Last Name :</th>
+				<th>Last_Name :</th>
 				<td><input type="text" name="lastName"></td>
 			</tr>
 			<tr>
-				<th>Login ID :</th>
+				<th>Login_Id :</th>
 				<td><input type="text" name="loginId"></td>
 			</tr>
 			<tr>
@@ -27,7 +27,7 @@
 				<td><input type="text" name="password"></td>
 			</tr>
 			<tr>
-				<th>DOB :</th>
+				<th>DOb :</th>
 				<td><input type="date" name="dob"></td>
 			</tr>
 			<tr>
