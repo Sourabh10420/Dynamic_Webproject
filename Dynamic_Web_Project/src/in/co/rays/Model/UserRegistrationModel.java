@@ -44,7 +44,7 @@ public class UserRegistrationModel {
 	
 	PreparedStatement ps = conn.prepareStatement(str);
 	
-	ps.setInt(1, pk);
+	ps.setInt(1, bean.getId());
 	ps.setString(2, bean.getfName());
 	ps.setString(3, bean.getlName());
 	ps.setString(4, bean.getLoginId());

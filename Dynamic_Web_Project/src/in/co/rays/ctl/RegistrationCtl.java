@@ -3,7 +3,6 @@ package in.co.rays.ctl;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,48 +10,49 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.co.rays.Bean.UserBean;
-import in.co.rays.Model.UserModel;
+import in.co.rays.Bean.UserRegistrationBean;
+import in.co.rays.Model.UserRegistrationModel;
 
-@WebServlet("/UserRegistrationCtl")
-public class UserRegistrationCtl extends HttpServlet{
-	
-	
+@WebServlet("/RegistrationCtl")
+public class RegistrationCtl extends HttpServlet {
+
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		resp.sendRedirect("UserRegistration.jsp");
+		System.out.println("Registration doGet");
+
+		resp.sendRedirect("Registration.jsp");
 	}
-	
+
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
-			
+		System.out.println("Registration doPost");
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
-		
-		
-		String fname  = req.getParameter("firstName");
-		String lname = req.getParameter("lastName");
+		String fName = req.getParameter("fName");
+		String lName = req.getParameter("lName");
 		String login = req.getParameter("loginId");
 		String pass = req.getParameter("password");
-		String  dob= req.getParameter("dob");
 		String address = req.getParameter("address");
+		String dob = req.getParameter("dob");
 		
-		UserBean bean = new UserBean();
 		
-		bean.setFirstName(fname);
-		bean.setLastName(lname);
+		UserRegistrationBean bean = new UserRegistrationBean();
+		
+		bean.setfName(fName);
+		bean.setlName(lName);
 		bean.setLoginId(login);
 		bean.setPassword(pass);
+		bean.setAddress(address);
 		try {
 			bean.setDob(sdf.parse(dob));
 		} catch (ParseException e) {
-			
+		
 			e.printStackTrace();
 		}
-		bean.setAddress(address);
-	
-	UserModel model = new UserModel();
+		
+		UserRegistrationModel model = new UserRegistrationModel();
 		
 		try {
 			model.add(bean);
@@ -60,7 +60,8 @@ public class UserRegistrationCtl extends HttpServlet{
 			
 			e.printStackTrace();
 		}
-		resp.sendRedirect("UserRegistration.jsp");
+		
+		resp.sendRedirect("Registration.jsp");
+	}
 
-}
 }

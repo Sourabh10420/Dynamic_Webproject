@@ -16,7 +16,7 @@
 		String dob = request.getParameter("dob");
 		String address = request.getParameter("address");
 	%>
-	<h3><%=fname%></h3>
+	<h1><%=fname%></h1>
 	<h3><%=lname%></h3>
 	<h3><%=login%></h3>
 	<h3><%=pass%></h3>

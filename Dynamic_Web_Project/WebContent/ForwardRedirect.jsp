@@ -5,26 +5,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<style>
-
-h1{
-	text-align: center;
-	
-	color: red;
-
-}
-
-
-</style>
 </head>
 <body>
-	
-	<%@include file = "Header.jsp" %>
-	
-	<h1><u>Welcome</u></h1>
-
- <!--	<h1>Successfull LoginPage...!!</h1>  -->
- 
-<%@include file = "Footer.jsp" %>
+	<form action="ForwardFirstServlet" method="post">
+		<table>
+			<tr>
+				<th>FirstName :</th>
+				<td><input type="text" name="firstName"></td>
+				<td><input type="submit"></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>

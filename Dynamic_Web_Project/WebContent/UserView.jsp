@@ -7,11 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<form action="UserRegistrationCtl" method = post>
-
-	
-		<table>
+	<%@include file = "Header.jsp"%>
+	<form action= "UserCtl" method= "post">
+		
+				<table>
 			<tr>
 				<th>First_Name :</th>
 				<td><input type="text" name="firstName"></td>
@@ -41,6 +40,9 @@
 				<td><input type="submit"></td>
 			</tr>
 		</table>
+	
+	
 	</form>
+	<%@include file = "Footer.jsp" %>
 </body>
 </html>

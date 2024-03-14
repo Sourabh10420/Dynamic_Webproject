@@ -3,7 +3,6 @@ package in.co.rays.ctl;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,20 +13,19 @@ import javax.servlet.http.HttpServletResponse;
 import in.co.rays.Bean.UserBean;
 import in.co.rays.Model.UserModel;
 
-@WebServlet("/UserRegistrationCtl")
-public class UserRegistrationCtl extends HttpServlet{
+@WebServlet("/UserCtl")
+public class UserCtl extends HttpServlet {
 	
 	
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		resp.sendRedirect("UserRegistration.jsp");
+			resp.sendRedirect("UserView.jsp");
 	}
 	
+	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
-			
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
 		
 		
@@ -60,7 +58,8 @@ public class UserRegistrationCtl extends HttpServlet{
 			
 			e.printStackTrace();
 		}
-		resp.sendRedirect("UserRegistration.jsp");
+		resp.sendRedirect("UserView.jsp");
 
-}
+	}
+
 }

@@ -13,14 +13,14 @@ public class TestUserRegistration {
 	
 	public static void main(String[] args) throws Exception {
 			
-		//testAdd();
+		testAdd();
 		
 		//testNextPk();
 	//	testUpdate();
 	//	testDelete();
 	// testFindByPk();
 		// testAuthenticate();
-		 testSearch();
+	//	 testSearch();
 	}
 	
 	public static void testNextPk() throws Exception{
@@ -49,7 +49,7 @@ public class TestUserRegistration {
 		String str = sdf.format(d);
 		
 	
-		
+		bean.setId(1);
 		bean.setfName("sourabh");
 		bean.setlName("mandloi");
 		bean.setLoginId("sourabh@gmail.com");
