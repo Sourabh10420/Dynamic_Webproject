@@ -1,3 +1,4 @@
+<%@page import="in.co.rays.Bean.UserRegistrationBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,8 +9,14 @@
 </head>
 <body>
 	
+	<% String msg = (String) request.getAttribute("msg") ;
+	
+	UserRegistrationBean bean = (UserRegistrationBean) request.getAttribute("bean");		
+	%>
+	 
 	<form action="UserRegistrationCtl" method = post>
-
+					
+					
 	
 		<table>
 			<tr>
@@ -38,8 +45,9 @@
 			</tr>
 			<tr>
 				<th></th>
-				<td><input type="submit"></td>
+				<td><input type="submit" name="operation" value = "save"></td>
 			</tr>
+				
 		</table>
 	</form>
 </body>

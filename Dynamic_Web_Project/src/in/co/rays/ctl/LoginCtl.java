@@ -14,67 +14,60 @@ import in.co.rays.Bean.UserBean;
 import in.co.rays.Model.UserModel;
 
 @WebServlet("/LoginCtl")
-public class LoginCtl extends HttpServlet{
-	
+public class LoginCtl extends HttpServlet {
 
+	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-	//	resp.sendRedirect("LoginView.jsp");
-		
-	String op = req.getParameter("operation");
-		
-		if(op != null) {
-			
-			HttpSession sc = req.getSession();
-			
-		sc.invalidate();
-		
+		String op = req.getParameter("operation");
+		if (op != null && op.equals("logout")) {
+			HttpSession session = req.getSession();
+			session.invalidate();
 		}
-		
 		resp.sendRedirect("LoginView.jsp");
-		
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String login=req.getParameter("loginId");
-		String pass =req.getParameter("password");
-		
-		UserModel model = new UserModel();
-		
-		try {
-		
-		UserBean bean = model.authenticate(login, pass);
-		
-		if(bean != null) {
-			
-		//	resp.sendRedirect("Welcome.jsp");
-			
-//			req.setAttribute("user", bean);
-//			
-//		RequestDispatcher rd = req.getRequestDispatcher("Welcome.jsp");
-//			
-//			rd.forward(req, resp);
-			
-			HttpSession session = req.getSession();
-			
-		session.setAttribute("user", bean);
-			
-			resp.sendRedirect("Welcome.jsp");
-		}else {
-			//resp.sendRedirect("LoginView.jsp");
-			
-			req.setAttribute("msg", "login id & password is invalid");
-			
-			RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
-			rd.forward(req, resp);
+
+		String login = req.getParameter("loginId");
+		String pass = req.getParameter("password");
+		String uri = req.getParameter("uri");
+		String op = req.getParameter("operation");
+
+		if (op.equals("signIn")) {
+			UserModel model = new UserModel();
+
+			try {
+				UserBean bean = model.authenticate(login, pass);
+				if (bean != null) {
+					HttpSession session = req.getSession();
+					// session.setMaxInactiveInterval(20);
+					session.setAttribute("user", bean);
+					if (uri.equalsIgnoreCase("null")) {
+						resp.sendRedirect("Welcome.jsp");
+					} else {
+						resp.sendRedirect(uri);
+					}
+				} else {
+					req.setAttribute("msg", "login & password is invalid...!!!");
+					RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
+					rd.forward(req, resp);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		
-		}catch(Exception e) {
-			
-			e.printStackTrace();
+
+		if (op.equals("signUp")) {
+			resp.sendRedirect("UserRegistrationCtl");
 		}
+		if(op.equals("forgottPassword")) {
+			
+			resp.sendRedirect("ForgottPasswordCtl");
+		}
+
 	}
 
 }
+		
+	

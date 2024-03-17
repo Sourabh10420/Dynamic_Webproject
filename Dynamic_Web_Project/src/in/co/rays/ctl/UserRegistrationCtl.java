@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.co.rays.Bean.UserBean;
+import in.co.rays.Bean.UserRegistrationBean;
 import in.co.rays.Model.UserModel;
+import in.co.rays.Model.UserRegistrationModel;
 
 @WebServlet("/UserRegistrationCtl")
 public class UserRegistrationCtl extends HttpServlet{
@@ -28,6 +31,8 @@ public class UserRegistrationCtl extends HttpServlet{
 		
 			
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		String op =req.getParameter("operation");
 		
 		
 		
@@ -54,13 +59,20 @@ public class UserRegistrationCtl extends HttpServlet{
 	
 	UserModel model = new UserModel();
 		
-		try {
-			model.add(bean);
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
-		resp.sendRedirect("UserRegistration.jsp");
 
-}
+		if (op.equals("save")) {
+			try {
+				model.add(bean);
+				req.setAttribute("msg", "User singUp successfully Pleass Login ...!!!");
+				RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
+				rd.forward(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		
+		resp.sendRedirect("LoginView.jsp");
+	}
+
 }

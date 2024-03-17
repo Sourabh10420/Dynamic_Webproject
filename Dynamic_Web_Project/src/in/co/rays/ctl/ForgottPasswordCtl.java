@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import in.co.rays.Bean.UserBean;
 import in.co.rays.Model.UserModel;
 
-@WebServlet("/UserListCtl")
-public class UserListCtl extends HttpServlet {
-
+@WebServlet("/ForgottPasswordCtl")
+public class ForgottPasswordCtl extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -32,7 +32,7 @@ public class UserListCtl extends HttpServlet {
 			req.setAttribute("list", list);
 			req.setAttribute("nextList", nextList);
 			req.setAttribute("pageNo", pageNo);
-			RequestDispatcher rd = req.getRequestDispatcher("UserListView.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("ForgottPassword.jsp");
 			rd.forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -99,7 +99,7 @@ public class UserListCtl extends HttpServlet {
 			req.setAttribute("list", list);
 			req.setAttribute("nextList", nextList);
 			req.setAttribute("pageNo", pageNo);
-			RequestDispatcher rd = req.getRequestDispatcher("UserListView.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("ForgottPassword.jsp");
 			rd.forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -108,3 +108,5 @@ public class UserListCtl extends HttpServlet {
 	}
 
 }
+
+

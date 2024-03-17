@@ -1,3 +1,4 @@
+<%@page import="in.co.rays.Bean.UserBean"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -18,8 +19,8 @@
 		List list = (List) request.getAttribute("list");
 		Iterator it = list.iterator();
 	%>
-	<%@include file="Header.jsp"%>
-	<form action="UserListCtl" method="post">
+	<%-- <%@include file="Header.jsp"%> --%>
+	<form action="ForgottPasswordCtl" method="post">
 
 		<table>
 			<tr>

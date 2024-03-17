@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.co.rays.Bean.UserBean;
 import in.co.rays.Bean.UserRegistrationBean;
+import in.co.rays.Model.UserModel;
 import in.co.rays.Model.UserRegistrationModel;
 
 @WebServlet("/RegistrationLoginCtl")
@@ -30,11 +32,11 @@ public class RegistrationLoginCtl extends HttpServlet {
 	String login	=req.getParameter("loginId");
 	String pass	=req.getParameter("password");
 	
-	UserRegistrationModel model = new UserRegistrationModel();
+	UserModel model = new UserModel();
 	
 	try {
 		
-		UserRegistrationBean bean = new UserRegistrationBean();
+		UserBean bean = new UserBean();
 	
 	bean.setLoginId(login);
 	bean.setPassword(pass);

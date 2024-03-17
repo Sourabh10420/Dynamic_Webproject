@@ -16,9 +16,10 @@ public class TestUser {
 		//testDelete();
 	//	testNextPk();
 		//	testSearchByNormal();
-			//testFIndByPk();
-		//testSearch();
-		testAuthonticate();
+			//testFindByPk();
+	//testSearch();
+	//	testAuthonticate();
+    	testFindByLogin();
 	}
 	 public static void testAuthonticate() throws Exception{
 		 	
@@ -48,50 +49,39 @@ public class TestUser {
 			System.out.println("pk =" + pk);
 	}
 
-	public static void testAdd() throws Exception{
-    	
-    	UserModel model = new UserModel();
-    	
-    	UserBean bean = new UserBean();
-    	
-    	Date d = new Date("2008/01/7");
-    	
-    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-    	
-    	String str = sdf.format(d);
-    	
-    
-    	bean.setFirstName("Shivam");
-    	bean.setLastName("Nigwal");
-    	bean.setLoginId("shivam@gmail.com");
-    	bean.setPassword("shivam@143");
-    	bean.setDob(new Date(str));
-    	bean.setAddress("Rajur");
-    	
-    	model.add(bean);
-    }
-	
-	  public static void testUpdate() throws Exception {
-		  
-		  UserModel model = new UserModel();
-	    	
-	    	UserBean bean = new UserBean();
-	    	
-	    	Date d = new Date("1998/09/10");
-	    	
-	    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-	    	
-	    	String str = sdf.format(d);
-	    	
-	    	bean.setId(3);
-	    	bean.setFirstName("Karan");
-	    	bean.setLastName("Mandloi");
-	    	bean.setLoginId("karan@gmail.com");
-	    	bean.setPassword("karan@143");
-	    	bean.setDob(new Date(str));
-	    	bean.setAddress("Khargone");
-	    	
-	    	model.update(bean);
+	private static void testAdd() throws Exception {
+
+		UserBean bean = new UserBean();
+
+		bean.setFirstName("xyz");
+		bean.setLastName("abc");
+		bean.setLoginId("xyz@gmail.com");
+		bean.setPassword("123");
+		bean.setDob(new Date());
+		bean.setAddress("indore");
+
+		UserModel model = new UserModel();
+
+		model.add(bean);
+
+	}
+
+	private static void testUpdate() throws Exception {
+
+		UserBean bean = new UserBean();
+
+		bean.setId(2);
+		bean.setFirstName("pqr");
+		bean.setLastName("abc");
+		bean.setLoginId("pqr@gmail.com");
+		bean.setPassword("123");
+		bean.setDob(new Date());
+		bean.setAddress("indore");
+
+		UserModel model = new UserModel();
+
+		model.update(bean);
+
 	}
 	  
 	  public static void testDelete() throws Exception{
@@ -110,7 +100,7 @@ public class TestUser {
 		  model.searchByNormal(bean);
 	  }
 	  
-	  public static void testFIndByPk() throws Exception{
+	  public static void testFindByPk() throws Exception{
 		  
 		  UserModel model = new UserModel();
 		  
@@ -125,30 +115,38 @@ public class TestUser {
 		  System.out.println("\t"+ bean.getAddress());
 	  }
 	  
-	  public static void testSearch() throws Exception{
-		  
-		  UserModel model = new UserModel();
-		  
-		  UserBean bean =  new UserBean();
-		  
-		// bean.setId(1);
-		bean.setFirstName("s");
-		  
-		//  Date d = new Date("1996/08/28");
-		  
-		//  SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		  
-		//  String str = sdf.format(d);
-		  
-		//  bean.setDob(new Date(str));
-		  
-		  List list = model.search(bean, 1, 5);
-		  
-		  Iterator it = list.iterator();
-		  
-		  while(it.hasNext()) {
+		private static void testSearch() throws Exception {
+
+			UserBean bean = new UserBean();
+			bean.setFirstName("a");
+
+			UserModel model = new UserModel();
+
+			List list = model.search(bean, 1, 5);
+
+			Iterator it = list.iterator();
+
+			while (it.hasNext()) {
+
+				bean = (UserBean) it.next();
+
+				System.out.print(bean.getId());
+				System.out.print("\t" + bean.getFirstName());
+				System.out.print("\t" + bean.getLastName());
+				System.out.print("\t" + bean.getLoginId());
+				System.out.print("\t" + bean.getPassword());
+				System.out.print("\t" + bean.getDob());
+				System.out.println("\t" + bean.getAddress());
+
+			}
+
+		}
+		  public static void testFindByLogin() throws Exception{
 			  
-			  bean = (UserBean) it.next();
+			  UserModel model = new UserModel();
+			  
+			  UserBean bean = model.findByLogin("sourabh@gmail.com"); 
+			  
 			  
 			  System.out.print("\t"+ bean.getId());
 			  System.out.print("\t"+ bean.getFirstName());
@@ -158,7 +156,6 @@ public class TestUser {
 			  System.out.print("\t"+ bean.getDob());
 			  System.out.println("\t"+ bean.getAddress());
 		  }
-		  
-	  }
+		
 }
 

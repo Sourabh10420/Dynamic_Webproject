@@ -4,8 +4,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+		a:hover {
+	color: red;
+	padding-left: 5px;
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style> 
+ 
+ h3{
+ font: italic;
+ font-family: sans-serif;
+ padding-left: 5px;
+ font-style: italic;
+ 
+ }
+
+</style>
 </head>
 <body>
 	<%
@@ -15,10 +32,10 @@
 		if (user != null) {
 	%>
 	<h3>
-		Hi,
+		Hi, <br>
 		<%=user.getFirstName()%></h3>
 	<a href="UserCtl">Add User</a> |
-	<a href="UserListCtl">User List</a>
+	<a href="UserListCtl">User List</a> |
 	<a href= "LoginCtl?operation=logout">Logout</a>
 	<%
 		} else {
