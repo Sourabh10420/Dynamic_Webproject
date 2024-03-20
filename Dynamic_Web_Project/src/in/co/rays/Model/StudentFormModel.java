@@ -94,13 +94,16 @@ public class StudentFormModel  {
 		
 	}
 	
-	public StudentFormBean findByPk(StudentFormBean bean) throws Exception{
+	public StudentFormBean findByPk(int id) throws Exception{
 		
        Connection conn=JDBCDataSource.getConnection();
 		
-		PreparedStatement ps=conn.prepareStatement("select * from StudentForm where id=? ,First_Name=?");
+		PreparedStatement ps=conn.prepareStatement("select * from StudentForm where id=?");
 		
+		ps.setInt(1, id);
 		ResultSet rs =ps.executeQuery();
+		
+		StudentFormBean  bean = new StudentFormBean();
 		
 		while (rs.next()) {
 			

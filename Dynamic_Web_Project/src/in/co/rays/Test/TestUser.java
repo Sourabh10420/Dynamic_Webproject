@@ -145,7 +145,7 @@ public class TestUser {
 			  
 			  UserModel model = new UserModel();
 			  
-			  UserBean bean = model.findByLogin("sourabh@gmail.com"); 
+			  UserBean bean = model.findByLogin("karan@gmail.com"); 
 			  
 			  
 			  System.out.print("\t"+ bean.getId());

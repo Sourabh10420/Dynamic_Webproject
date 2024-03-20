@@ -33,19 +33,56 @@ public class LoginCtl extends HttpServlet {
 		String pass = req.getParameter("password");
 		String uri = req.getParameter("uri");
 		String op = req.getParameter("operation");
+		
+		
+		UserModel model = new UserModel();
+		
+		/*if (login.equals("") || pass.equals("")) {
+			
+
+			if (login.equals("")) {
+				req.setAttribute("login", "login id is required");
+			}
+			if (pass.equals("")) {
+				req.setAttribute("pass", "password is required");
+			}
+			
+
+			RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
+			rd.forward(req, resp);
+		}
+
+*/		
+		
 
 		if (op.equals("signIn")) {
-			UserModel model = new UserModel();
+			
+		
+			if (login.equals("") || pass.equals("")) {
+				
 
+				if (login.equals("")) {
+					req.setAttribute("login", "login id is required");
+				}
+				if (pass.equals("")) {
+					req.setAttribute("pass", "password is required");
+				}
+				
+				RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
+				rd.forward(req, resp);
+			
+			}else {
+				
+			
 			try {
 				UserBean bean = model.authenticate(login, pass);
 				if (bean != null) {
 					HttpSession session = req.getSession();
 					// session.setMaxInactiveInterval(20);
 					session.setAttribute("user", bean);
-					if (uri.equalsIgnoreCase("null")) {
+				if (uri.equalsIgnoreCase("null")) {
 						resp.sendRedirect("Welcome.jsp");
-					} else {
+				} else {
 						resp.sendRedirect(uri);
 					}
 				} else {
@@ -58,16 +95,20 @@ public class LoginCtl extends HttpServlet {
 			}
 		}
 
+		
+		
+		
+	}
 		if (op.equals("signUp")) {
 			resp.sendRedirect("UserRegistrationCtl");
 		}
 		if(op.equals("forgottPassword")) {
 			
-			resp.sendRedirect("ForgottPasswordCtl");
+			resp.sendRedirect("ResetPass.jsp");
 		}
-
-	}
-
 }
-		
+	
+	
+
+}		
 	

@@ -13,7 +13,7 @@
 	%>
 
 	<%@include file="Header.jsp"%>
-	<form action="UserCtl" method="post">
+	<form action="UserCtl.do" method="post">
 	
 	<%
 			if (msg != null) {
@@ -61,7 +61,10 @@
 				<th></th>
 				<td><input type="submit" name="operation"
 					value="<%=(bean != null) ? "update" : "save"%>"></td>
-			</tr>
+						<td><input type = "submit" name = operation value = "list"></td>
+			
+				</tr>
+			
 		</table>
 	</form>
 

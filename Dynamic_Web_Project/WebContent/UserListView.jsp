@@ -19,11 +19,11 @@
 		Iterator it = list.iterator();
 	%>
 	<%@include file="Header.jsp"%>
-	<form action="UserListCtl" method="post">
+	<form action="UserListCtl.do" method="post">
 
 		<table>
 			<tr>
-				<td><input type="text" name="firstName"></td>
+				<td><input type="text"  placeholder="FirstName" name="firstName"></td>
 				<td><input type="date" name="dob"></td>
 				<td><input type="submit" name="operation" value="search"></td>
 			</tr>
@@ -55,7 +55,7 @@
 				<td align="center"><%=bean.getPassword()%></td>
 				<td align="center"><%=bean.getDob()%></td>
 				<td align="center"><%=bean.getAddress()%></td>
-				<td align="center"><a href="UserCtl?id=<%=bean.getId()%>">edit</a></td>
+				<td align="center"><a href="UserCtl.do?id=<%=bean.getId()%>">edit</a></td>
 			</tr>
 			<%
 				}
@@ -65,13 +65,15 @@
 			<tr>
 				<td style="text-align: left;"><input type="submit" name="operation"
 					value="previous" <%=(pageNo != 1) ? "" : "disabled"%>></td>
-				<td style="text-align:40%;"><input type="submit" name="operation"
-					value="add"></td>
 				<td style="text-align:center;"><input type="submit" name="operation"
+					value="add"></td>
+				<td style="text-align:right;"><input type="submit" name="operation"
 					value="delete"></td>
-				<td style="text-align: right;"><input type="submit" name="operation"
+				</tr>
+				<tr>
+								<td style="text-align: left;"><input type="submit" name="operation"
 					value="next" <%=(nextList.size() != 0) ? "" : "disabled"%>></td>
-			</tr>
+				</tr>
 		</table>
 		<input type="hidden" name="pageNo" value="<%=pageNo%>">
 	</form>

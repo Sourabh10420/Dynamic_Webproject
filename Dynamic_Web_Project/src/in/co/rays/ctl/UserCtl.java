@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import in.co.rays.Bean.UserBean;
 import in.co.rays.Model.UserModel;
 
-@WebServlet("/UserCtl")
+@WebServlet("/UserCtl.do")
 public class UserCtl extends HttpServlet {
 
 	@Override
@@ -31,6 +31,8 @@ public class UserCtl extends HttpServlet {
 		}
 		RequestDispatcher rd = req.getRequestDispatcher("UserView.jsp");
 		rd.forward(req, resp);
+		
+//		resp.sendRedirect("UserView.jsp");
 	}
 
 	@Override
@@ -67,7 +69,7 @@ public class UserCtl extends HttpServlet {
 		if (op.equals("save")) {
 			try {
 				model.add(bean);
-				req.setAttribute("msg", "User added successfully...!!");
+				req.setAttribute("msg", "User Data added successfully...!!");
 				RequestDispatcher rd = req.getRequestDispatcher("UserView.jsp");
 				rd.forward(req, resp);
 			} catch (Exception e) {
@@ -78,9 +80,10 @@ public class UserCtl extends HttpServlet {
 		if (op.equals("update")) {
 			try {
 				model.update(bean);
-				bean = model.findByPk(bean.getId());
-				req.setAttribute("bean", bean);
-				req.setAttribute("msg", "User updated successfully...!!");
+//				bean = model.findByPk(bean.getId());
+			UserBean existBean = model.findByPk(bean.getId());
+				req.setAttribute("bean", existBean);
+				req.setAttribute("msg", "User Data updated successfully...!!");
 				RequestDispatcher rd = req.getRequestDispatcher("UserView.jsp");
 				rd.forward(req, resp);
 			} catch (Exception e) {
@@ -89,7 +92,7 @@ public class UserCtl extends HttpServlet {
 		}
 
 		if (op.equals("list")) {
-			resp.sendRedirect("UserListCtl");
+			resp.sendRedirect("UserListCtl.do");
 		}
 	}
 }

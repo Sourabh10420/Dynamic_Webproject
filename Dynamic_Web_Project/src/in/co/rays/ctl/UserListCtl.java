@@ -15,17 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 import in.co.rays.Bean.UserBean;
 import in.co.rays.Model.UserModel;
 
-@WebServlet("/UserListCtl")
+@WebServlet("/UserListCtl.do")
 public class UserListCtl extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		int pageNo = 1;
+    int pageNo = 1;
 		int pageSize = 5;
 
 		UserModel model = new UserModel();
-
 		try {
 			List list = model.search(null, pageNo, pageSize);
 			List nextList = model.search(null, pageNo + 1, pageSize);
@@ -34,7 +33,7 @@ public class UserListCtl extends HttpServlet {
 			req.setAttribute("pageNo", pageNo);
 			RequestDispatcher rd = req.getRequestDispatcher("UserListView.jsp");
 			rd.forward(req, resp);
-		} catch (Exception e) {
+	       } catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -69,7 +68,7 @@ public class UserListCtl extends HttpServlet {
 		}
 
 		if (op.equals("add")) {
-			resp.sendRedirect("UserCtl");
+			resp.sendRedirect("UserCtl.do");
 		}
 
 		if (op.equals("next")) {
@@ -83,6 +82,7 @@ public class UserListCtl extends HttpServlet {
 		if (op.equals("delete")) {
 			pageNo = 1;
 			String[] ids = req.getParameterValues("ids");
+			if (ids != null && ids.length > 0) {
 			for (String id : ids) {
 				try {
 					model.delete(Integer.parseInt(id));
@@ -92,7 +92,7 @@ public class UserListCtl extends HttpServlet {
 			}
 
 		}
-
+	}
 		try {
 			List list = model.search(bean, pageNo, pageSize);
 			List nextList = model.search(bean, pageNo + 1, pageSize);
