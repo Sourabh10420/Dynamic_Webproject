@@ -1,3 +1,4 @@
+<%@page import="in.co.rays.Bean.StudentFormBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -17,7 +18,18 @@
 </style>
 </head>
 <body>
+		<% StudentFormBean bean = (StudentFormBean) request.getAttribute("bean");
+		   String msg = (String) request.getAttribute("msg"); %>
+		   
 	<form>
+	
+		<%
+			if (msg != null) {
+		%>
+		<%=msg%>
+		<%
+			}
+		%>
 		<div class="form">
 			<table>
 				<tr>

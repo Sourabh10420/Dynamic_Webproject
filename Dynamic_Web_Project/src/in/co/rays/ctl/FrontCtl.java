@@ -37,6 +37,7 @@ public class FrontCtl implements Filter {
 		
 
 		if (session.getAttribute("user") == null) {
+			
 			req.setAttribute("msg", "Session expired...plz login again..!!");
 			req.setAttribute("uri", uri);
 			RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");

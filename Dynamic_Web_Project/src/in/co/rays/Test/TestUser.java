@@ -17,9 +17,9 @@ public class TestUser {
 	//	testNextPk();
 		//	testSearchByNormal();
 			//testFindByPk();
-	//testSearch();
+	testSearch();
 	//	testAuthonticate();
-    	testFindByLogin();
+    //	testFindByLogin();
 	}
 	 public static void testAuthonticate() throws Exception{
 		 	
@@ -118,7 +118,7 @@ public class TestUser {
 		private static void testSearch() throws Exception {
 
 			UserBean bean = new UserBean();
-			bean.setFirstName("a");
+			bean.setFirstName("s");
 
 			UserModel model = new UserModel();
 

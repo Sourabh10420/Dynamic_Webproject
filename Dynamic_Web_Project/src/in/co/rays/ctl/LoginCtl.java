@@ -62,6 +62,7 @@ public class LoginCtl extends HttpServlet {
 				
 
 				if (login.equals("")) {
+					
 					req.setAttribute("login", "login id is required");
 				}
 				if (pass.equals("")) {

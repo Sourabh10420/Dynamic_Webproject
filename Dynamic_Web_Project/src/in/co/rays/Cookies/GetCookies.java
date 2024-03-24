@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Get")
+@WebServlet("/get")
 public class GetCookies extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 
@@ -31,6 +32,5 @@ public class GetCookies extends HttpServlet {
 
 		}
 	}
-	}
 
-
+}

@@ -212,6 +212,7 @@ public class UserModel {
 		if (bean != null) {
 
 			if (bean.getFirstName() != null && bean.getFirstName().length() > 0) {
+				
 				sql.append(" and first_name like '" + bean.getFirstName() + "%'");
 			}
 
@@ -226,7 +227,7 @@ public class UserModel {
 			sql.append(" limit " + pageNo + ", " + pageSize);
 		}
 
-		System.out.println("sql ==>> " + sql.toString());
+		System.out.println("sql ==>> " + sql);
 
 		PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 
