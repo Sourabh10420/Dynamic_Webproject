@@ -17,13 +17,15 @@ display: flex;
 	justify-content: center;
 	
 	position: relative;
+	
+	margin-top: 3cm;
     
 }
 
 .form {
 	display: flex;
 	justify-content: center;
-	margin-top: 4cm;
+	margin-top: 2cm;
 	color: white;
 	
 }

@@ -240,8 +240,13 @@ public class PaymentModel {
 				bd.append(" and id =" + bean.getId());
 			}
 			if (bean.getPayer() != null && bean.getPayer().length() > 0) {
-				bd.append(" and Payer like '" + bean.getPayer() + "%'");
+				bd.append(" and payer like '" + bean.getPayer() + "%'");
 
+			}
+			if(bean.getPayementDate()!=null && bean.getPayementDate().getTime()>0) {
+				
+				bd.append(" and Payment_Date like '" + new java.sql.Date(bean.getPayementDate().getTime()) + "%'" );
+				
 			}
 		}
 

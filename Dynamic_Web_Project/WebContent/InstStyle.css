@@ -16,16 +16,7 @@
   justify-content: center;
   align-items: center;
 }
-.header{
 
-            position: static;
-            transition: 4s;
-          
-}
-.header:hover{
-  transform: perspective(500px) scale3d(1,2,3) rotate(1800deg);
-
-}
 .center {
   width: 350px;
   border: 1px solid rgb(195, 195, 195);

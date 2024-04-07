@@ -14,7 +14,7 @@ body {
 .form {
 	display: flex;
 	justify-content: center;
-	margin-top: 4cm;
+	margin-top: 3cm;
 }
 /* .color{
 
@@ -51,6 +51,9 @@ background-color: red;
 	<img alt="" src="">
 	<div class="form">
 		<span class="color">
+		
+				
+				<h1 align="center">Student Registration</h1>
 
 			<form action="StudentFormRegistrationCtl" method="post">
 
@@ -214,17 +217,13 @@ background-color: red;
 					</tr>
 					<tr>
 						<th></th>
-						<td><input type="submit" name="operation"
-							value="<%=(bean != null) ? "update" : "save"%>"></td>
-
-
+						<td ><br><input type="submit" name="operation"
+							value="<%=(bean != null) ? "update" : "save"%>">
+							 <input type="submit" name="operation"
+							value="backToLoginPage">
+							<input type="submit" name="operation" value="Reset"></td>
 					</tr>
-
-					<tr>
-						<th></th>
-						<td><input type="submit" name="operation"
-							value="backToLoginPage"></td>
-					</tr>
+					
 				</table>
 
 			</form>

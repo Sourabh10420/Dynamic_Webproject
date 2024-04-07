@@ -1,5 +1,7 @@
 package in.co.rays.Bean;
 
+import java.util.Date;
+
 public class MarksheetBean {
 
 	private int id;
@@ -8,6 +10,9 @@ public class MarksheetBean {
 	private int physics;
 	private int chemistry;
 	private int maths;
+	private String emailId;
+	private String password;
+	private Date dob;
 
 	public int getId() {
 		return id;
@@ -55,7 +60,31 @@ public class MarksheetBean {
 
 	public void setMaths(int maths) {
 		this.maths = maths;
+		
 	}
+	public String getEmailId() {
+		return emailId;
+	}
+
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
 
 }
 

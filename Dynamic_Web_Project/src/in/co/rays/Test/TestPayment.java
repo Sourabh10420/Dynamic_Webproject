@@ -16,13 +16,13 @@ public class TestPayment {
 		
 		//testNextPk();
 		//testAdd();
-		//testUpdate();
+		testUpdate();
 		//testFindByPk();
 		//testSearch(); 
 		
 		//testDelete();
 	//	testFindByLogin();
-		testAuthenticate();
+		//testAuthenticate();
 	}
 	
 	public static void testAuthenticate() throws Exception{
@@ -65,14 +65,8 @@ public class TestPayment {
 		
 		PaymentModel model = new PaymentModel();
 		
-		Date d = new Date("2023/10/22");
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		
-		String str = sdf.format(d);
-		
-		
-		bean.setPayementDate(new Date(str));
+	
+		bean.setPayementDate(new Date());
 		bean.setDescription("PayemttosendaAshwin");
 		bean.setAmmount(10000);
 		bean.setPaymentMethod("Paytm");
@@ -89,14 +83,9 @@ public class TestPayment {
 		
 		PaymentModel model = new PaymentModel();
 		
-		Date d = new Date("2023/10/22");
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		
-		String str = sdf.format(d);
-		;
+
 		bean.setId(4);
-		bean.setPayementDate(new Date(str));
+		bean.setPayementDate(new Date());
 		bean.setDescription("PayemttosendaAshwin");
 		bean.setAmmount(10000);
 		bean.setPaymentMethod("Paytm");
@@ -137,7 +126,9 @@ public class TestPayment {
 		
 		PaymentBean bean = new PaymentBean();
 		
-		bean.setId(1);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		//bean.setId(1);
 		bean.setPayer("a");
 		
 		List list = model.search(bean, 1, 5);

@@ -117,5 +117,9 @@ public class StudentFormRegistrationCtl extends HttpServlet {
 
 			resp.sendRedirect("StudentLoginView.jsp");
 		}
+		if(op.equals("Reset")) {
+			
+			resp.sendRedirect("StudentRegistrationView.jsp");
+		}
 	}
 }

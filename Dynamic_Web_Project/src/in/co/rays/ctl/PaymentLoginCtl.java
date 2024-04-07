@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import in.co.rays.Bean.PaymentBean;
 import in.co.rays.Bean.UserBean;
-import in.co.rays.Model.UserModel;
+import in.co.rays.Model.PaymentModel;
 
-@WebServlet("/LoginCtl")
-public class LoginCtl extends HttpServlet {
+@WebServlet("/PaymentLoginCtl")
+public class PaymentLoginCtl extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,73 +24,59 @@ public class LoginCtl extends HttpServlet {
 			HttpSession session = req.getSession();
 			session.invalidate();
 		}
-		resp.sendRedirect("LoginView.jsp");
+		resp.sendRedirect("PayementLoginView.jsp");
+
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		String login = req.getParameter("loginId");
+		
+		String uri =req.getParameter("uri");
+		String email = req.getParameter("emailId");
 		String pass = req.getParameter("password");
-		String uri = req.getParameter("uri");
 		String op = req.getParameter("operation");
 		
+		PaymentModel model = new PaymentModel();
 		
-		UserModel model = new UserModel();
-		
-		/*if (login.equals("") || pass.equals("")) {
+		if (op.equals("Login")) {
 			
 
-			if (login.equals("")) {
-				req.setAttribute("login", "login id is required");
-			}
-			if (pass.equals("")) {
-				req.setAttribute("pass", "password is required");
-			}
-			
+			if (email.equals("") || pass.equals("")) {
 
-			RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
-			rd.forward(req, resp);
-		}
+				if (email.equals("")) {
 
-*/		
-		
-
-		if (op.equals("signIn")) {
-			
-		
-			if (login.equals("") || pass.equals("")) {
-				
-
-				if (login.equals("")) {
-					
-					req.setAttribute("login", "login id is required");
+					req.setAttribute("login", "emailId is Required");
 				}
 				if (pass.equals("")) {
-					req.setAttribute("pass", "password is required");
+
+					req.setAttribute("pas", "Password is Required");
 				}
 				
-				RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher("PayementLoginView.jsp");
+				
 				rd.forward(req, resp);
 			
-			}else {
+		  }else {
 				
-			
+				
 			try {
-				
-				UserBean bean = model.authenticate(login, pass);
+			PaymentBean	bean = model.authenticate(email, pass);
+	 
 				if (bean != null) {
+					
 					HttpSession session = req.getSession();
-					// session.setMaxInactiveInterval(20);
+					
 					session.setAttribute("user", bean);
+				
 				if (uri.equalsIgnoreCase("null")) {
-						resp.sendRedirect("Welcome.jsp");
+						resp.sendRedirect("PaymentWelcome.jsp");
 				} else {
 						resp.sendRedirect(uri);
 					}
+				
 				} else {
 					req.setAttribute("msg", "login & password is invalid...!!!");
-					RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
+					RequestDispatcher rd = req.getRequestDispatcher("PayementLoginView.jsp");
 					rd.forward(req, resp);
 				}
 			} catch (Exception e) {
@@ -108,9 +95,6 @@ public class LoginCtl extends HttpServlet {
 			
 			resp.sendRedirect("ResetPass.jsp");
 		}
-}
-	
-	
 
-}		
-	
+	}
+}
